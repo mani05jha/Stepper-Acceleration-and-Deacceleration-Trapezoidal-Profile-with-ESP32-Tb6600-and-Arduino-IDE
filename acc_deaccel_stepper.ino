@@ -37,11 +37,11 @@ void cruise(int64_t max_speed) {
 }
 
 void run_stepper(double wait_time_in_usec) {
-  // digitalWrite(PULSE_PIN, HIGH);
-  // delayMicroseconds(10);
-  // digitalWrite(PULSE_PIN, LOW);
-  // delayMicroseconds((wait_time_in_usec * 1000000) - 10);
-  Serial.print((wait_time_in_usec * 1000000) - 10);
+  digitalWrite(PULSE_PIN, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(PULSE_PIN, LOW);
+  delayMicroseconds((wait_time_in_usec * 1000000) - 10);
+  //Serial.print((wait_time_in_usec * 1000000) - 10);
 }
 
 void stepper_task(stepper_data* stepper) {
@@ -61,9 +61,9 @@ void stepper_task(stepper_data* stepper) {
     }
     current_travel_position += 1;
     stepper->current_position += stepper->dir;
-    Serial.print(" ");
-    Serial.print(stepper-> current_position);
-    Serial.println();
+    //Serial.print(" ");
+    //Serial.print(stepper-> current_position);
+    //Serial.println();
   }
 }
 
