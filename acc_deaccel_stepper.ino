@@ -6,9 +6,9 @@
 #define ENABLE_PIN 23
 
 typedef struct {
-  uint8_t step_pin;
-  uint8_t dir_pin;
-  uint8_t enable_pin;
+  const uint8_t step_pin;
+  const uint8_t dir_pin;
+  const uint8_t enable_pin;
   int8_t dir;
   int64_t current_position;
   int64_t goto_position;
