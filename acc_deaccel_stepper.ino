@@ -50,6 +50,11 @@ void stepper_task(stepper_data* stepper) {
   uint64_t stop_accel_position = (stepper->max_speed * stepper->max_speed) / (2 * stepper->max_acceleration);
   uint64_t start_deaccel_position = total_travel_position - stop_accel_position;
 
+  if (total_travel_position < 2 * stop_accel_position) {
+    stop_accel_position = total_travel_position / 2;
+    start_deaccel_position = total_travel_position - stop_accel_position;
+  }
+
   set_direction(stepper->current_position, stepper->goto_position, &stepper->dir);
   while (current_travel_position < total_travel_position) {
     if (current_travel_position < stop_accel_position) {
